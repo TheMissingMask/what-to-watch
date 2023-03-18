@@ -1,9 +1,9 @@
+### simple code that helps you decide which episode in a TV series to watch ###
+
 import imdb
 import random
 
 def getEpisodes(code):
-
-#    ia=imdb.IMDb() # create instance of IMDb
 
     series=ia.get_movie(code) # find the name of the series corresponding to code
     print('\nSeries: %s\n-------\n'%(series))
@@ -23,14 +23,14 @@ def getEpisodes(code):
 
     return(episodesList)
 
-
- 
-### want to have an option to let the user choose the series that the episode will be chosen from
-
 ia=imdb.IMDb() # create instance of IMDb
 
 seriesName=input('Please tell me the name of the series you would like to watch: ')
-code=ia.search_movie(seriesName)[0].getID()
-episodesList=getEpisodes(code)
-epToWatch=random.choice(episodesList)
-print('-------\nYou should watch...\n%s\n-------'%(epToWatch))
+
+code=ia.search_movie(seriesName)[0].getID() # each series has its own code to find it on IMDb
+
+episodesList=getEpisodes(code) # get the list of all episodes of that series
+
+epToWatch=random.choice(episodesList) # randomly select one of those episodes to watch
+
+print('-------\nYou should watch...\n%s\n-------'%(epToWatch)) # some delightful output for the user
